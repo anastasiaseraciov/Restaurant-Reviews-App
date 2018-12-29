@@ -18,8 +18,8 @@ header {
 }
 
 /* Minimum font size for all devices is 16px */
-body,td,th,p{
-	font: 1em/1.6 Arial,
+body,td,th,p,ul,li{
+	font: 1.2vw/1.6 Arial,
 	Helvetica,
 	sans-serif;
 	color: #333;
@@ -267,7 +267,7 @@ nav h1 a {
   right: 0;
   top: 80px;
   width: 50%; */
-  height: 400px;
+  height: 300px;
   border-bottom: 1px solid #999;
   width: 100%;
 }
