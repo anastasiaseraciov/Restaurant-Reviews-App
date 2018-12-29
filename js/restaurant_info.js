@@ -88,6 +88,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
+  image.alt = 'Photo of' + restaurant.name + ' restaurant in ' + restaurant.neighborhood + ',' + restaurant.cuisine_type +'cuisine';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -108,6 +109,17 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
   const hours = document.getElementById('restaurant-hours');
   for (let key in operatingHours) {
     const row = document.createElement('tr');
+    
+    // Create Attitube for Tab Index on Row Only
+    var label_tabindex = document.createAttribute("tabindex");
+    label_tabindex.value = 0;
+    // Set the attirubte to the row
+    row.setAttributeNode(label_tabindex);
+
+    // Aria Labelled By
+    var label_attribute = document.createAttribute("aria-labelledby");
+    label_attribute.value = key + "_label";
+    row.setAttributeNode(label_attribute);
 
     const day = document.createElement('td');
     day.innerHTML = key;
@@ -118,6 +130,12 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
     row.appendChild(time);
 
     hours.appendChild(row);
+
+    // Aria Label for Row That Speaks Day + Hours
+    var aria_label = document.createElement('label');
+    aria_label.id = key + "_label";
+    aria_label.className = "aria-label";
+    aria_label.innerHTML = key + operatingHours[key];
   }
 }
 
@@ -147,6 +165,11 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  * Create review HTML and add it to the webpage.
  */
 createReviewHTML = (review) => {
+  
+  // Set Review ID to the Next Random Number
+  var randomNumberBetween0and19999 = Math.floor(Math.random() * 20000);
+  var review_id = randomNumberBetween0and19999;
+
   const li = document.createElement('li');
   const name = document.createElement('p');
   name.innerHTML = review.name;
@@ -163,6 +186,25 @@ createReviewHTML = (review) => {
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
   li.appendChild(comments);
+
+    // Add Tab Index for the List Element
+    var label_tabindex = document.createAttribute("tabindex");
+    label_tabindex.value = 0;
+    // Set the attirubte to the row
+    li.setAttributeNode(label_tabindex);
+
+    // Add Aria LabelledBy Attribute for Review
+    var label_attribute = document.createAttribute("aria-labelledby");
+    label_attribute.value = review_id + "_label";
+    li.setAttributeNode(label_attribute);
+
+    // Add Aria Label for Single Review
+    var aria_label = document.createElement('label');
+    aria_label.id = review_id + "_label";
+    aria_label.className = "aria-label";
+    aria_label.innerHTML = "Rating " + review.rating + " stars. Date " + review.date + ". Reviewed By " + review.name + ". Comments: " + review.comments;
+
+    li.appendChild(aria_label);
 
   return li;
 }

@@ -436,6 +436,12 @@ nav h1 a {
   color: #666;
 }
 
+/* ARIA labels hide */
+
+.aria-label {
+  display: none;
+}
+
 
 /* Responsivness */
 
