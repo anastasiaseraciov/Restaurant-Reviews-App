@@ -4,6 +4,16 @@
 
 ## View Ongoing Project live here --> https://anastasiaseraciov.github.io/Restaurant-Reviews-App
 
+##Dependencies
+
+1. Install Python
+    Create Server from command line in the website file directory
+    Python 2: python -m SimpleHTTPServer 8000 
+    Python 3: python3 -m http.server 8000
+    Visit the site in your browser at http://localhost:8000
+
+Fixed issue with path: https://www.pythoncentral.io/add-python-to-path-python-is-not-recognized-as-an-internal-or-external-command/
+
 ## Project Overview: Stage 1
 
 For the **Restaurant Reviews** projects, you will incrementally convert a static webpage to a mobile-ready web application. In **Stage One**, you will take a static design that lacks accessibility and convert the design to be responsive on different sized displays and accessible for screen reader use. You will also add a service worker to begin the process of creating a seamless offline experience for your users.
