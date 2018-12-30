@@ -20,7 +20,7 @@ self.addEventListener("install", function (event) {
                     '//normalize-css.googlecode.com/svn/trunk/normalize.css'
                 ])
                 .catch(error => {
-
+                    console.log('Caches open failed: ' + error);
                 });
         }));
 });
