@@ -45,3 +45,6 @@ This repository uses a [service worker](https://developers.google.com/web/fundam
 
 ### ACCESIBILITY :sunglasses:
 The webpage is tested to be working on Google Chrome, Mozilla Firefox, Chrome Canary.
+
+## CONTRIBUTING
+The initial [code](https://github.com/udacity/mws-restaurant-stage-1) was given by UDACITY.
