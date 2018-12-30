@@ -1,13 +1,27 @@
-/**
- * Registering serviceWorker
- */
-
+// The Browser Must Support Service Workers to Register
 if (navigator.serviceWorker) {
-    navigator.serviceWorker.register('./sw.js').then(function () {
-        console.log('Registration worked!');
-    }).catch(function () {
-        console.log('Registration failed!');
-    });
-} else {
-    console.log('Service Worker does not supported!');
-};
+
+    //console.log("👷 Starting Service Worker");
+
+    navigator.serviceWorker
+        .register("/sw.js", {
+            scope: "/"
+        })
+        .then(worker => {
+            if (worker.installing) {
+                //console.log("⚙️ Service worker installing.", worker);
+                return;
+            } else if (worker.waiting) {
+                //console.log("⚙️ Service worker is waiting.", worker);
+                return;
+            } else if (worker.active) {
+                //console.log("⚙️ Service worker is active.", worker);
+                return;
+            }
+            return;
+        })
+        .catch(err => {
+            //console.log(`⚙️ Service worker failed with ${err}.`);
+        }); // end of function
+
+} // end of if statement
