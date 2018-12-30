@@ -281,9 +281,9 @@ nav h1 a {
 }
 
 #restaurants-list li a:hover {
-  color: #ff9292;
+  color: #fff;
   cursor: pointer;
-  background-color: #0000FF;
+  background-color: #33260f;
 }
 
 /* ====================== Restaurant Details ====================== */
