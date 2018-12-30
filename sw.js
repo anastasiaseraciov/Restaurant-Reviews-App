@@ -1,17 +1,19 @@
-// Define the Caches
-var staticCacheName = 'mws-restaurant-static-v';
-// Set Get Random number for Cache ID
-var randomNumberBetween0and19999 = Math.floor(Math.random() * 20000);
-var cache_id = randomNumberBetween0and19999;
+/* Define the Caches */
+
+let staticCacheName = 'mws-restaurant-static-v';
+
+/* Set Get Random number for Cache ID */
+let randomNumberBetween0and19999 = Math.floor(Math.random() * 20000);
+let cache_id = randomNumberBetween0and19999;
 staticCacheName += cache_id;
 
 self.addEventListener("install", function (event) {
     event.waitUntil(
         caches.open(staticCacheName).then(function (cache) {
             return cache.addAll([
-                    'index.html',
-                    'restaurant.html',
-                    '/css/main.css',
+                    '/index.html',
+                    '/restaurant.html',
+                    '/css/styles.css',
                     '/js/dbhelper.js',
                     '/js/main.js',
                     '/js/restaurant_info.js',
