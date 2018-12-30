@@ -1,8 +1,8 @@
 let restaurants,
   neighborhoods,
-  cuisines;
-var newMap;
-var markers = [];
+  cuisines
+var newMap
+var markers = []
 
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
@@ -25,7 +25,7 @@ fetchNeighborhoods = () => {
       fillNeighborhoodsHTML();
     }
   });
-};
+}
 
 /**
  * Set neighborhoods HTML.
@@ -38,7 +38,7 @@ fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
     option.value = neighborhood;
     select.append(option);
   });
-};
+}
 
 /**
  * Fetch all cuisines and set their HTML.
