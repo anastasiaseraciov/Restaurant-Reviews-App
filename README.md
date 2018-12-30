@@ -16,7 +16,7 @@ I have been provided the code for a restaurant reviews website. The code haa a l
 To acces the files or view the website you need to download or clone the repository files to your local machine
 with <code>git clone https://github.com/anastasiaseraciov/Restaurant-Reviews-App.git</code>
 
-View Ongoing Project live --> [HERE](https://anastasiaseraciov.github.io/Restaurant-Reviews-App)
+View a scratch of the Project live --> [HERE](https://anastasiaseraciov.github.io/Restaurant-Reviews-App) till I will find a solution to make it available without a Python server.
 
 ## Dependancies
 
