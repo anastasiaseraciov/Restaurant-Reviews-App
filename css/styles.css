@@ -481,3 +481,46 @@ nav h1 a {
     margin: auto;
   }
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+  body,
+  td,
+  th,
+  p,
+  ul,
+  li {
+    font-size: 4.2vw;
+  }
+}
+
+/* Change font-size depending on viewport size */
+@media (min-width: 481px) and (max-width: 767px) {
+
+  body,
+  td,
+  th,
+  p,
+  ul,
+  li {
+    font-size: 2.2vw;
+  }
+}
+
+  @media (min-width: 320px) and (max-width: 567px) {
+    #reviews-list li p:nth-of-type(2) {
+      float: none;
+      width: 100%;
+      padding: 0 30px 10px 20px;
+      border-radius: 15px 0 0 0
+    }
+
+    #reviews-list li p:nth-of-type(3) {
+      width: 60%;
+      margin-right: 20px;
+    }
+
+    #reviews-list li p:first-of-type {
+      width: 100%;
+    }
+}
