@@ -2,11 +2,6 @@
 
 let staticCacheName = 'mws-restaurant-static-v';
 
-/* Set Get Random number for Cache ID */
-let randomNumberBetween0and19999 = Math.floor(Math.random() * 20000);
-let cache_id = randomNumberBetween0and19999;
-staticCacheName += cache_id;
-
 self.addEventListener("install", function (event) {
     event.waitUntil(
         caches.open(staticCacheName).then(function (cache) {
@@ -29,49 +24,41 @@ self.addEventListener("install", function (event) {
         }));
 });
 
-self.addEventListener('activate', function (event) {
+// intercept all requests either return cached asset or fetch from network
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        // Add cache.put to cache images on each fetch
+        caches.match(event.request).then(response => {
+            return response || fetch(event.request).then(fetchResponse => {
+                return caches.open(staticCacheName).then(cache => {
+                    cache.put(event.request, fetchResponse.clone());
+                    return fetchResponse;
+                });
+            });
+        }).catch(error => {
+            if (event.request.url.includes('.jpg')) {
+                return caches.match('/img/fixed/offline_img1.png');
+            }
+            return new Response('Not connected to the internet', {
+                status: 404,
+                statusText: "Not connected to the internet"
+            });
+        })
+    );
+});
+
+// delete old/unused static caches
+self.addEventListener('activate', event => {
     event.waitUntil(
-        caches.keys().then(function (cacheNames) {
+        // caches.delete('-restaurant-static-001')
+        caches.keys().then(cacheNames => {
             return Promise.all(
-                cacheNames.filter(function (cacheName) {
-                    return cacheName.startsWith('mws-restaurant-') &&
-                        cacheName != staticCacheName;
-                }).map(function (cacheName) {
+                cacheNames.filter(cacheName => {
+                    return cacheName.startsWith('mws-restaurant-') && cacheName !== staticCacheName;
+                }).map(cacheName => {
                     return caches.delete(cacheName);
                 })
             );
         })
     );
 });
-
-
-self.addEventListener('fetch',
-    function (event) {
-        event.respondWith(
-            caches.match(event.request)
-            .then(
-                function (response) {
-                    if (response !== undefined) {
-                        return response;
-                    } else {
-                        return fetch(event.request).then(
-                            function (response) {
-                                let responseClone = response.clone();
-
-                                caches.open(staticCacheName)
-                                    .then(
-                                        function (cache) {
-                                            cache.put(event.request, responseClone);
-                                        }
-                                    );
-                                return response;
-                            }
-                        );
-                    }
-                }
-            ) // end of promise for cache match
-
-        ); // end of respond with
-
-    }
-);
