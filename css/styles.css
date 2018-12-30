@@ -43,18 +43,18 @@ body {
 } */
 
 a {
-  color: #ffabab;
+  color: #ffc04c;
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: #d85b5b;
+  color: #ffc04c;
   text-decoration: none;
 }
 
 nav h1 a:hover {
-  color: #ff9292;
+  color: #ffc04c;
 }
 
 a img {
@@ -201,14 +201,6 @@ nav h1 a {
   width: 200px;
   font-size: 18px;
   border-radius: 5px;
-}
-
-.filter-options label {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
 }
 
 /* ====================== Restaurant Listing ====================== */
